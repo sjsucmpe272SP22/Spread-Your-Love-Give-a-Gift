@@ -1,0 +1,46 @@
+<div class="container" *ngIf="sales">
+  <h4 class="alert alert-danger" *ngIf="sales.length==0">No products saled yet.....</h4>
+</div>
+<div class="container-fluid" *ngIf="sales">
+  <form [formGroup]="statusform">
+  <div class="table-responsive" style="color: whitesmoke" *ngIf="sales.length!=0">
+    <table class="table" >
+      <tr>
+        <th>Product</th>
+        <th>Product Name</th>
+        <th>Buyer mailId</th>
+        <th>Qty ordered</th>
+        <th>Payment Mode</th>
+        <th>Address details</th>
+        <th>Date of order</th>
+        <th>Order status</th>
+      </tr>
+      <tr *ngFor="let i of sales">
+        <td><img class="img-thumbnail" [src]='"./assets/"+i.path' style="height: 50px;width: 50px;"></td>
+        <td>{{i.gname}}</td>
+        <td>{{i.cid}}</td>
+        <td>{{i.qty}}</td>
+        <td>{{i.paymentType}}</td>
+        <td>
+          <p>{{i.address.doorNo}},</p>
+          <p>{{i.address.street}},</p>
+          <p>{{i.address.city}},</p>
+          <p>{{i.address.pincode}}.</p>
+        </td>
+        <td>{{i.orderDate|date:'mediumDate'}}</td>
+        <td><select class="form-control" formControlName="stat" >
+          <option selected="selected">{{i.ordrstatus}}</option>
+          <option value="DISPATCHED">DISPATCHED</option>
+          <option value="IN_TRANSIT">IN_TRANSIT</option>
+          <option value="OUT_FOR_DELIVERY">OUT_FOR_DELIVERY</option>
+          <option value="DELIVERED">DELIVERED</option>
+        </select>
+          <br><button (click)="changeOrderStatus(i)" [disabled]="i.ordrstatus==statusform.controls.stat.value" class="btn btn-success btn-xs">change</button>
+        </td>
+      </tr>
+      <tfoot *ngIf="totalamt"><th><mark>Total Amount For Saled Items:</mark></th><td><mark>{{totalamt|currency:'INR':true}}</mark></td></tfoot>
+    </table>
+  </div>
+  </form>
+  <strong class="alert alert-success" *ngIf="response">{{response}}</strong>
+</div>

@@ -1,0 +1,133 @@
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <div class="panel panel-primary" id="grad1">
+        <div class="panel-heading text-center" style="background-color: transparent;border: transparent;"><strong>Customer Registration</strong></div>
+        <div class="panel-body">
+  
+          <!-- Write the code for form here -->
+          <!-- should use the bootstrap classes form, form-group, form-control -->
+          <!-- use error-message class for displaying field leval error messages -->
+          <form [formGroup]="registrationForm" (ngSubmit)="custRegister()">
+            <div class="form-group">
+              <label for="emailId">Email ID:</label>
+              <input type="email" class="form-control" formControlName="emailId">
+              <span class="text-danger" *ngIf="registrationForm.get('emailId').invalid && registrationForm.get('emailId').dirty">
+                  Please enter a valid email.
+              </span>
+            </div>
+            <div class="form-group">
+                <label for="cname">Username:</label>
+                <input type="text" class="form-control" formControlName="cname">
+                <span class="text-danger" *ngIf="registrationForm.get('cname').invalid && registrationForm.get('cname').dirty">
+                  <span *ngIf="registrationForm.controls.cname.hasError('pattern')">
+                    Only spaces are not allowed.
+                  </span>
+                  <span *ngIf="registrationForm.controls.cname.hasError('maxlength')">
+                    Length must be less than 51.
+                  </span>
+                </span>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password"  class="form-control" formControlName="password">
+                <span class="text-danger" *ngIf="registrationForm.get('password').invalid && registrationForm.get('password').dirty">
+                  <span *ngIf="registrationForm.controls.password.hasError('passwordcheck') && !registrationForm.controls.password.hasError('required')">
+                  Password must be alphanumeric and contain atleast one uppercase,one lowercase letter and one special character.
+                  </span>
+                  <span *ngIf="registrationForm.controls.password.hasError('minlength')">
+                    Password must be minimum 8 characters.
+                  </span>
+                  <span *ngIf="registrationForm.controls.password.hasError('maxlength')">
+                    Password must be not exceed 15 characters.
+                  </span>
+                </span>
+            </div>
+            <div class="form-group">
+                <label  for="cnfpassword">Confirm Password:</label>
+                <input type="password" class="form-control" formControlName="cnfpassword">
+                <span *ngIf="(registrationForm.controls.password.value==registrationForm.controls.cnfpassword.value) &&(registrationForm.get('password').dirty)"> 
+                 <span *ngIf="correct()" class="text-success"> password matched <span class="glyphicon glyphicon-ok"></span></span>
+                </span>
+            </div>
+            <div class="form-group">
+                <label for="contactNo">Phone No:</label>
+                <input type="number" class="form-control" formControlName="contactNo">
+                <span class="text-danger" *ngIf="registrationForm.get('contactNo').invalid && registrationForm.get('contactNo').dirty">
+                    Number should start with (9,8,7,6) and length must be 10.
+                  </span>
+            </div>
+            <div class="form-group" formGroupName="addressEntity">
+              <label class="label label-primary">Address:</label>
+              <div class="form-group"> 
+                <label>Door No.</label>
+                <input type="text" class="form-control" formControlName="doorNo">
+                <span class="text-danger" *ngIf="registrationForm.get('addressEntity').get('doorNo').invalid && registrationForm.get('addressEntity').get('doorNo').dirty">
+                    Only numbers and special characters(-,/) are allowed.
+                    <span *ngIf="registrationForm.get('addressEntity').get('doorNo').hasError('maxlength')">
+                      length must not exceed 15 characters.
+                    </span>
+                </span>
+              </div>
+              <div class="form-group"> 
+                  <label>Street</label>
+                  <input type="text" class="form-control" formControlName="street">
+                  <span class="text-danger" *ngIf="registrationForm.get('addressEntity').get('street').invalid && registrationForm.get('addressEntity').get('street').dirty">
+                      Only spaces are not allowed.
+                      <span *ngIf="registrationForm.get('addressEntity').get('street').hasError('maxlength')">
+                        length must not exceed 50 characters.
+                      </span>
+                  </span>
+              </div>
+              <div class="form-group"> 
+                  <label>City</label>
+                  <input type="text" class="form-control" formControlName="city">
+                  <span class="text-danger" *ngIf="registrationForm.get('addressEntity').get('city').invalid && registrationForm.get('addressEntity').get('city').dirty">
+                      Only spaces are not allowed.
+                      <span *ngIf="registrationForm.get('addressEntity').get('city').hasError('maxlength')">
+                        length must not exceed 50 characters.
+                      </span>
+                  </span>
+              </div>
+              <div class="form-group"> 
+                  <label>Pincode</label>
+                  <input type="number" class="form-control" formControlName="pincode">
+                  <span class="text-danger" *ngIf="registrationForm.get('addressEntity').get('pincode').invalid && registrationForm.get('addressEntity').get('pincode').dirty">
+                      Length must be 6 only.
+                  </span>
+              </div>
+            </div>
+            <div class="form-group">
+                <button type="submit" id="grad1" class="btn btn-info" data-toggle="modal" data-target="#myModal" [disabled]="registrationForm.invalid">Register</button>
+            </div>
+          </form>
+          <div *ngIf="errorMessage!=null" class="alert alert-danger">
+            <span class="text-danger">{{errorMessage}}</span>
+          </div>
+          <div *ngIf="cname!=null" class="alert alert-danger">
+            <span class="text-success">{{cname|custregister}} <span class="label label-success"><span class="glyphicon glyphicon-saved"></span></span></span>
+            <span class="text-warning">You will be now redirected to the homepage.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Modal -->
+  <div id="myModal" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+    
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Modal Header</h4>
+          </div>
+          <div class="modal-body" *ngIf="cname!=null">
+            <p class="alert alert-success">{{cname|custregister}}</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" routerLink="/custlogin" data-dismiss="modal">OK</button>
+          </div>
+        </div>
+    
+      </div>
+    </div>

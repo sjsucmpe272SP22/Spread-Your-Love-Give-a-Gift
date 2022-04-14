@@ -1,0 +1,49 @@
+
+      <div class="panel panel-primary" id="grad1">
+        <div class="panel-heading text-center" style="background-color: transparent;border: transparent;"><strong>Modify Gift</strong></div>
+        <div class="panel-body">
+  
+          <!-- Write the code for form here -->
+          <!-- should use the bootstrap classes form, form-group, form-control -->
+          <!-- use error-message class for displaying field leval error messages -->
+          <form [formGroup]="modForm" (ngSubmit)="updateProduct()">
+              <label for="gname">Product name:</label>&nbsp;<b style="color: whitesmoke">{{this.modForm.controls.gname.value}}</b><br>
+              <label for="gname">Category:</label>&nbsp;<b style="color: whitesmoke">{{this.modForm.controls.category.value|uppercase}}</b>
+              
+            <div class="form-group">
+                <label for="price">Price</label>
+                <input type="number" class="form-control" formControlName="price">
+                <span *ngIf="modForm.get('price').invalid && modForm.get('price').dirty" class="text-danger">
+                    <span *ngIf="modForm.controls.price.hasError('min') && !modForm.controls.price.hasError('required')">  
+                    It should be greater than 0.
+                    </span>
+                    <span *ngIf="modForm.controls.price.hasError('pattern') && !modForm.controls.price.hasError('required')">
+                      Price must be less than 10000.
+                    </span>
+                  </span>
+            </div>
+            <div class="form-group">
+                <label for="qty">Quantity</label>
+                <input type="number" class="form-control" formControlName="qty">
+                <span *ngIf="modForm.get('qty').invalid && modForm.get('qty').dirty" class="text-danger">
+                    <span *ngIf="modForm.controls.qty.hasError('min') && !modForm.controls.qty.hasError('required')">  
+                      It should be greater than 0.
+                    </span>
+                    <span *ngIf="modForm.controls.qty.hasError('pattern') && !modForm.controls.qty.hasError('required')">
+                      Quantity must be less than 1000.
+                    </span>
+                  </span>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary" id="grad1" [disabled]="modForm.invalid">Update</button>
+                <button class="btn btn-primary" id="grad1" (click)="refresh()">Cancel Update</button>
+            </div>
+          </form>
+          <div *ngIf="errorMessage!=null">
+            <span class="text-danger">{{errorMessage}}</span>
+          </div>
+          <div *ngIf="successMessage!=null">
+            <span class="alert alert-success text-success">{{successMessage}} redirecting to homepage...</span>
+          </div>
+        </div>
+      </div>
