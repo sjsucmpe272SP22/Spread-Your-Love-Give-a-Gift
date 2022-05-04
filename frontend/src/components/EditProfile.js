@@ -317,11 +317,13 @@ const EditProfile = () => {
         {!editProfileLoading && !gettingCountries && 
             <div className="edit_profile_home_body">
                 <div className="container">
-                   <center> <h3 className="edit_profile_header">Edit my profile!!!</h3>
-                   <button className="btn editprofile_viewprofile-btn" onClick={()=>{navigate("/view-profile")}}>View Profile</button>
-                    </center> 
-                    {/* <div className="edit_profile_subheader">Everything on this page can be seen by anyone</div> */}
+                    <center><h3 className="edit_profile_header">Edit my profile!!!</h3></center>
                     
+                    {/* <div className="edit_profile_subheader">Everything on this page can be seen by anyone</div> */}
+                    <center>
+                    <button className="btn editprofile_viewprofile-btn" onClick={()=>{navigate("/view-profile")}}>View Profile</button>
+                    </center>
+                 
                 </div>
                 <div className="edit-profile-form-container container">
                     <div className="row">
@@ -454,16 +456,14 @@ const EditProfile = () => {
                         </div>
                     </div>
                 </div>
-                <center>
                 <div className="container">
                     <div className="col-md-12">
+                        <center>
                         <button className="btn editprofile_save-btn" onClick={()=>{editProfile(user)}} disabled={editingProfile || !validName || !validEmail || !validPhone || !validAddress || !validCity || !validAbout}>Update</button>
                         <button className="btn editprofile_cancel-btn" onClick={()=>{navigate("/view-profile")}} disabled={editingProfile}>Cancel</button>
+                        </center>
                     </div>
                 </div>
-
-                </center>
-                
             </div>
         }
         {editProfileLoading && <span><LoadingIcons.ThreeDots height="5px" width="30px" stroke="black" fill="black"/></span>}

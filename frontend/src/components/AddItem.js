@@ -7,7 +7,8 @@ import { faPen, faCamera } from "@fortawesome/free-solid-svg-icons";
 import '../styles/addshopitem.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import config from '../config/config';
-
+//import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUser, faHeart, faFaceGrinSquintTears} from "@fortawesome/free-regular-svg-icons";
 
 const GET_CATEGORIES_API = "/api/category/";
 const ADD_ITEM_API = "/api/item/add";
@@ -170,7 +171,10 @@ const AddShopItem = ({setItems,items,id,currency}) => {
 
       <Modal show={show && !gettingCategories} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Add Gift Items</Modal.Title>
+          <Modal.Title>Add Gift Items
+
+          <FontAwesomeIcon className="fa-gift solid" icon={faHeart}/>
+          </Modal.Title>
         </Modal.Header>
         <Modal.Body>
             <Form>

@@ -33,7 +33,7 @@ const Orders = ({searchQuery,setSearchQuery}) => {
               const response = await authapi.post(ORDER_ITEMS_API+user.id,data);
               if(response && response.data){
                   if(response.data.success){
-                      //console.log(JSON.stringify(response.data));
+                      console.log(JSON.stringify(response.data));
                       if(response.data.items){
                           setOrders(response.data.items);
                           setMoreAvailable(response.data.moreAvailable);
@@ -117,24 +117,18 @@ const Orders = ({searchQuery,setSearchQuery}) => {
                 let eachOrderId = eachOrder[0];
                 let eachOrderItems = eachOrder[1];
                 let orderTotal = 0;
-                let c=0;
                 return eachOrderItems && eachOrderItems.map((eachOrderItem,index)=>{
                     orderTotal += parseFloat(eachOrderItem.price*eachOrderItem.orderQuantity);
                     if(index===eachOrderItems.length-1){
                         // return <><OrderItem currency={currency} key={eachOrderItem.id} item={eachOrderItem}/><div className="container">Order Total: {currency && currency.name+" "+orderTotal} </div></>
                     }
-                    c=c+1
-                    return <OrderItem currency={currency} key={eachOrderItem.id} item={eachOrderItem} address={eachOrderId} c={c-1}/>
-                    
+                    return <OrderItem currency={currency} key={eachOrderItem.id} item={eachOrderItem}/>
                 })
-                
             })}
-            
             {!orders || !Object.keys(orders).length && 
                 <div className="container"> No past orders!</div>
             }
         </div>
-        
         <div className="container mrgn-tp">
             {skip>0 && <span className="prev-paginate" onClick={getPrevOrders}>&lt; Prev</span>}
             {moreAvailable && <span className="next-paginate" onClick={getNextOrders}>Next &gt;</span>}
