@@ -1,10 +1,10 @@
 {
   "DB": {
-    "host": "etsy-database.cbzpx0naujke.us-east-1.rds.amazonaws.com",
-    "username": "admin",
-    "password": "SQLSriram",
+    "host": "",
+    "username": "",
+    "password": "",
     "port": 3306,
-    "database": "etsy_database"
+    "database": ""
   },
   "jwtPrivateKey": "1234",
   "port": "3001"
