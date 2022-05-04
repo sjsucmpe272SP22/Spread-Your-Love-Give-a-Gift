@@ -80,7 +80,7 @@ const ItemOverview = ({searchQuery,setSearchQuery,getOtherFilterItems,setItems,g
                         if(response.data.addedItem){
                             const shop = response.data.addedItem;
                             setOrderQuantity(1);
-                            setAddToCartSuccessMsg("Item added to cart successfully!");
+                            setAddToCartSuccessMsg("Gift has been added to giftbox Successfully!");
                             setTimeout(()=>{
                                 setAddToCartSuccessMsg("");
                             },1500);
@@ -96,7 +96,7 @@ const ItemOverview = ({searchQuery,setSearchQuery,getOtherFilterItems,setItems,g
             }catch(err){
                 if(err && err.response && err.response.data && err.response.data.error){
                 if(err.response.data.itemExists){
-                        setItemExistsMsg("Item already added to cart!");
+                        setItemExistsMsg("Gift has already been added to the cart!!!!");
                         setTimeout(()=>{
                             setItemExistsMsg("");
                         },5000);
@@ -238,7 +238,7 @@ const ItemOverview = ({searchQuery,setSearchQuery,getOtherFilterItems,setItems,g
                        
                         {/* <div data-testid="itemoverview-description">{item.description}</div> */}
                         <div data-testid="itemoverview-quantity" className="homeitem_sales_count">{(item.quantity)+" pieces available to GIFT!!!"}</div>
-                        <div data-testid="itemoverview-salescount" className="homeitem_sales_count">{item.salesCount+" pieces gifted already by others"}</div>
+                        <div data-testid="itemoverview-salescount" className="homeitem_sales_count">{item.salesCount+" pieces gifted already"}</div>
                     <Form.Group className="mb-3 mrgn-tp">
                         <Form.Label className="add-cart-quantity" htmlFor="quantity">Quantity</Form.Label>
                         <Form.Control className="add-cart-quantity" value={orderQuantity} onChange={(e)=>{setOrderQuantity(e.target.value)}}  type="number" id="quantity" />
