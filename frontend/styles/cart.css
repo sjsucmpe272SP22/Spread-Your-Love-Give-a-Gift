@@ -1,0 +1,25 @@
+.cart_order-btn {
+  background: rgb(5, 228, 206);
+  color: black;
+  border-radius: 20px;
+  border: 1px solid black;
+  margin-top: 20px;
+}
+
+.cart_order-btn:hover {
+  background: black;
+  color: white;
+}
+
+.cart-heading {
+  margin-top: 20px;
+  font-style: italic;
+  margin-bottom: 30px;
+  font-weight: 200;
+}
+
+.cart-cost {
+  margin-left: 20px;
+  text-decoration: underline;
+  font-style: italic;
+}
