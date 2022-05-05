@@ -17,4 +17,7 @@ There are very few chances for us to express our love towards dear ones. Present
 * Admin: The administrators are super users where they can add products details, categories etc.
 * User: The customers can order gifts through online. The customer should register to the system by entering their profile details.!
  
+![Untitled](https://user-images.githubusercontent.com/98917512/166856761-ed4085a7-afb8-46d0-93aa-a3f10816c0e3.png)
+
+ 
 ## URL: http://13.56.79.52:3000/
