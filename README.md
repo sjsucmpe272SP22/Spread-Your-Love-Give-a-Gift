@@ -22,3 +22,4 @@ Persona :
 Travelers and drivers to find the accident severity of a place.
 Traffic control authorities to find the most accident prone areas and take required actions.
 
+http://13.56.79.52:3000/
