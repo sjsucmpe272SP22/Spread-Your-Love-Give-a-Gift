@@ -1,25 +1,18 @@
-
-
 Title: "Spread your love-Give a Gift "
 
-Abstract: There are very few chances for us to express our love towards dear ones. presenting a gift is a way to show special feelings towards loved pals. There are some options on the amazon website for gift options but they deliver it with bills, MRP on product and that one is one of the features is amazon so there are a lot of issues with this and also on these busy days picking out a right gift requires a lot of energy, thoughtfulness, and yes, cash. So in this application, we help the users to find and deliver gifts for any occasion with ease process by making them customized with the occasion and requirements.
+Abstract:  
+Our project proposal is to build an online gift delivery system. The system will serve as an online portal for people to browse through, order and ship gifts. The system would include Admin (who hold inventory), buyers (or customers). The system will catalog and categorize the different gifts supplied by Admin and provide customers the opportunity to order(and maybe customize) gifts online. Customers can pay for it online and choose to ship the products to desired addresses. 
+
+Problem Statement:
+There are very few chances for us to express our love towards dear ones. Presenting a gift is a way to show special feelings towards our loved pals. There are some features on the different websites for gift options but they deliver it in an improper way including all the bills, MRP on product. So there are a lot of issues with this. Picking on the busy days and picking out a right gift requires a lot of energy, thoughtfulness, and yes, cash. So, In this application, we help the users to find and deliver gifts for any occasion with ease process by making them already customized gifts.
 
 Technologies used :
-Front-end : Javascript,HTML,CSS
-Back- end : Python
-Approach :
-Analyze the dataset to create dashboards to understand traffic distributions in cities. Use the below classification algorithms to predict the probability of accidents.
-
-Logistic Regression
-Decision Tree
-Random Forest
-KNN (k- nearest neighbors)
-Choose the model which produces the most accuracy, precision and recall.
-
-In Our application we have finalized to use Linear Regression by comparing with other models mentioned.
+Front-end : ReactJS
+Back- end : NodeJS
+DB : MongoDB
 
 Persona :
-Travelers and drivers to find the accident severity of a place.
-Traffic control authorities to find the most accident prone areas and take required actions.
-
-http://13.56.79.52:3000/
+Admin: The administrators are super users where they can add products details, categories etc.
+User: The customers can order gifts through online. The customer should register to the system by entering their profile details.!
+ 
+URL: http://13.56.79.52:3000/
