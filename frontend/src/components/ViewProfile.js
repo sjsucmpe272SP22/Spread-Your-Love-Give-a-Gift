@@ -1,6 +1,6 @@
 import React from 'react';
 import MainNavbar from './MainNavbar';
-import MainFooter from './MainFooter';
+//import MainFooter from './MainFooter';
 import {useEffect, useState} from 'react';
 import {useNavigate, Link} from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
