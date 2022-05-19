@@ -1,6 +1,6 @@
 const config = {
-    //baseUrl:'http://13.56.79.52:3001'
-    baseUrl:'http://localhost:3001'
+    baseUrl:'http://54.177.238.130:3001'
+    //baseUrl:'http://localhost:3001'
 };
 
 export default config;
