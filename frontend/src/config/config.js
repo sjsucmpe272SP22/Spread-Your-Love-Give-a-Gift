@@ -1,5 +1,5 @@
 const config = {
-    baseUrl:'http://54.177.238.130:3001'
+    baseUrl:'https://54.183.228.142:3001'
     //baseUrl:'http://localhost:3001'
 };
 
